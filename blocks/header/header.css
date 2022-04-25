@@ -1,0 +1,20 @@
+.header{
+    max-width: 880px;
+    margin: 45px auto 0;
+}
+@media all and (max-width:889px){
+    .header{
+        max-width: 580px;
+        margin: 0 auto;
+    }
+}
+@media all and (max-width:580px){
+    .header{
+        max-width: 320px;
+    }
+}
+@media all and (max-width:320px){
+    .header{
+        max-width: 320px;
+    }
+}

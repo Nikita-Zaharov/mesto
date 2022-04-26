@@ -1,4 +1,4 @@
-.button-like{
+.cell__button-like{
     border: 0;
     background-color: #FFFFFF;
     box-sizing: border-box;
@@ -8,6 +8,6 @@
     margin: 30px 20px 30px 0;
     cursor: pointer;
 }
-.button-like:hover{
+.cell__button-like:hover{
     opacity: 0.5;
 }

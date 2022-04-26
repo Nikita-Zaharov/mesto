@@ -10,14 +10,14 @@ let profileJob = document.querySelector('.profile__subtitle');
 
 
 popupOpenbtn.addEventListener('click',function(event){
-    popup.classList.toggle('popup__opened');
+    popup.classList.toggle('popup_opened');
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     event.preventDefault();
 });
 
 popupClosebtn.addEventListener('click',function(event){
-    popup.classList.toggle('popup__opened');
+    popup.classList.toggle('popup_opened');
     event.preventDefault();
 })
 
@@ -27,7 +27,7 @@ function formSubmitHandler (evt){
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent= jobInput.value;
-    popup.classList.toggle('popup__opened');
+    popup.classList.toggle('popup_opened');
 }
  formElement.addEventListener('submit',formSubmitHandler);
 

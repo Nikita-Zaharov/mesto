@@ -2,17 +2,20 @@
     margin-top: 67px;
     margin-bottom: 60px;
     margin-left: 200px;
-    max-width: 318px;
+}
+@media all and (max-width: 1279px){
+    .footer{
+    margin: 48px auto 36px;
+    max-width: 879px;
+    }
 }
 @media all and (max-width: 889px){
     .footer{
         max-width: 581px;
-        margin: 48px auto 36px;
     }
 }
 @media all and (max-width: 580px){
     .footer{
         max-width: 282px;
-        
     }
 }

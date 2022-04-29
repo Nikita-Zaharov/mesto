@@ -10,28 +10,27 @@
 <body class="body">
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="images/logo.png" alt="Лого">
-            <div class="header__line"></div>
+            <img class="header__logo" src="images/logo.svg" alt="Лого">
         </header>
         <main class="content">
             <section class="profile">
                 <img class="profile__avatar" src="images/avatar.jpg" alt="Аватар профиля">
                 <div class="profile__info">
-                    <div class="name">
+                    <div class="profile__name">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button type="button" class="profile__button-edit"><img class="edit" src="images/editbutton.svg" alt="Изменение профиля"></button>
+                        <button type="button" class="profile__button-edit"><img class="profile__edit" src="images/editbutton.svg" alt="Изменение профиля"></button>
                     </div>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <button type="button" class="profile__button-add"><img class="add" src="images/addbutton.svg" alt="Добавление профиля"></button>
+                <button type="button" class="profile__button-add"><img class="profile__add" src="images/addbutton.svg" alt="Добавление профиля"></button>
             </section>
             <div class="popup">
                 <div class="popup__container">
-                    <form class="popup__form">
-                        <button type="button" class="popup__button-close"><img class="photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
+                    <form class="popup__form" name="popupform">
+                        <button type="button" class="popup__button-close"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
                         <h3 class="popup__title">Редактировать профиль</h3>
-                        <input type="text"  placeholder="Имя" class="popup__name" value="Жак-Ив Кусто">
-                        <input type="text" placeholder="О себе" class="popup__subname" value="Исследователь океана">
+                        <input name="name" type="text" placeholder="Имя" class="popup__input" id="nameInput" value="Жак-Ив Кусто">
+                        <input name="job" type="text" placeholder="О себе" class="popup__input" id="jobInput" value="Исследователь океана">
                         <button type="submit" class="popup__button-save">Сохранить</button>
                     </form>
                 </div>
@@ -41,48 +40,48 @@
                     <img class="cell__photo" src="images/bigben.jpg" alt="Биг-Бен">
                     <div class="cell__info">
                         <h2 class="cell__info-title">Биг-Бен</h2>
-                        <button type="button" class="cell__button-like"><img class="photo-like" src="images/heart.svg" alt="Лайк"></button>
+                        <button type="button" class="cell__button-like"><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
                     </div>
                 </div>
                 <div class="cell">
                     <img class="cell__photo" src="images/sphinx.jpg" alt="Сфинкс">
                     <div class="cell__info">
                         <h2 class="cell__info-title">Сфинкс</h2>
-                        <button type="button" class="cell__button-like" ><img class="photo-like" src="images/heart.svg" alt="Лайк"></button>
+                        <button type="button" class="cell__button-like" ><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
                     </div>
                 </div>
                 <div class="cell">
                     <img class="cell__photo" src="images/stonehenj.jpg" alt="Стоунхендж">
                     <div class="cell__info">
                         <h2 class="cell__info-title">Стоунхендж</h2>
-                        <button type="button" class="cell__button-like"><img class="photo-like" src="images/heart.svg" alt="Лайк"></button>
+                        <button type="button" class="cell__button-like"><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
                     </div>
                 </div>
                 <div class="cell">
                     <img class="cell__photo" src="images/florencia.jpg" alt="Флорентийский собор">
                     <div class="cell__info">
                        <h2 class="cell__info-title">Флорентийский собор</h2>
-                       <button type="button" class="cell__button-like"><img class="photo-like" src="images/heart.svg" alt="Лайк"></button>
+                       <button type="button" class="cell__button-like"><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
                     </div>
                 </div>
                 <div class="cell">
                     <img class="cell__photo" src="images/teatre.jpg" alt="Сиднийский театр">
                     <div class="cell__info">
                         <h2 class="cell__info-title">Оперный театр в Сиднее</h2>
-                        <button type="button" class="cell__button-like" ><img class="photo-like" src="images/heart.svg" alt="Лайк"></button>
+                        <button type="button" class="cell__button-like" ><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
                     </div>
                 </div>
                 <div class="cell">
                     <img class="cell__photo" src="images/colizei.jpg" alt="Колизей">
                     <div class="cell__info">
                         <h2 class="cell__info-title">Колизей</h2>
-                        <button type="button" class="cell__button-like"><img class="photo-like" src="images/heart.svg" alt="Лайк"></button>
+                        <button type="button" class="cell__button-like"><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
                     </div>
                 </div>
             </section>
         </main>
         <footer class="footer">
-            <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
+            <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
         </footer>
     </div> 
 <script src="scripts/index.js"></script>

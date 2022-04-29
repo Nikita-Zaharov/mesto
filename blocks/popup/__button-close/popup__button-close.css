@@ -5,7 +5,7 @@
     width: 32px;
     height: 32px;
     padding: 0;
-    background: rgb(0, 0, 0, 0.000001);
+    background: transparent;
     border: none;
     cursor: pointer;
 }
@@ -16,7 +16,7 @@
     .popup__button-close{
         width: 20px;
         height: 20px;
-        top: -46px;
-        right: 5px;
+        top: -36px;
+        right: 3px;
     }
 }

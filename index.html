@@ -24,65 +24,53 @@
                 </div>
                 <button type="button" class="profile__button-add"><img class="profile__add" src="images/addbutton.svg" alt="Добавление профиля"></button>
             </section>
-            <div class="popup">
-                <div class="popup__container">
-                    <form class="popup__form" name="popupform">
-                        <button type="button" class="popup__button-close"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
-                        <h3 class="popup__title">Редактировать профиль</h3>
-                        <input name="name" type="text" placeholder="Имя" class="popup__input" id="nameInput" value="Жак-Ив Кусто">
-                        <input name="job" type="text" placeholder="О себе" class="popup__input" id="jobInput" value="Исследователь океана">
-                        <button type="submit" class="popup__button-save">Сохранить</button>
-                    </form>
-                </div>
-            </div>
             <section class="photo-grid">
-                <div class="cell">
-                    <img class="cell__photo" src="images/bigben.jpg" alt="Биг-Бен">
-                    <div class="cell__info">
-                        <h2 class="cell__info-title">Биг-Бен</h2>
-                        <button type="button" class="cell__button-like"><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
-                    </div>
-                </div>
-                <div class="cell">
-                    <img class="cell__photo" src="images/sphinx.jpg" alt="Сфинкс">
-                    <div class="cell__info">
-                        <h2 class="cell__info-title">Сфинкс</h2>
-                        <button type="button" class="cell__button-like" ><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
-                    </div>
-                </div>
-                <div class="cell">
-                    <img class="cell__photo" src="images/stonehenj.jpg" alt="Стоунхендж">
-                    <div class="cell__info">
-                        <h2 class="cell__info-title">Стоунхендж</h2>
-                        <button type="button" class="cell__button-like"><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
-                    </div>
-                </div>
-                <div class="cell">
-                    <img class="cell__photo" src="images/florencia.jpg" alt="Флорентийский собор">
-                    <div class="cell__info">
-                       <h2 class="cell__info-title">Флорентийский собор</h2>
-                       <button type="button" class="cell__button-like"><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
-                    </div>
-                </div>
-                <div class="cell">
-                    <img class="cell__photo" src="images/teatre.jpg" alt="Сиднийский театр">
-                    <div class="cell__info">
-                        <h2 class="cell__info-title">Оперный театр в Сиднее</h2>
-                        <button type="button" class="cell__button-like" ><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
-                    </div>
-                </div>
-                <div class="cell">
-                    <img class="cell__photo" src="images/colizei.jpg" alt="Колизей">
-                    <div class="cell__info">
-                        <h2 class="cell__info-title">Колизей</h2>
-                        <button type="button" class="cell__button-like"><img class="cell__photo-like" src="images/heart.svg" alt="Лайк"></button>
-                    </div>
-                </div>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
         </footer>
+        <template id="cell">
+            <div class="cell">
+                <img class="cell__photo" src="" alt="">
+                <button type='button' class="cell__button-delete"></button>
+                <div class="cell__info">
+                    <h2 class="cell__info-title"></h2>
+                    <button type="button" class="cell__button-like"></button>
+                </div>
+            </div>
+        </template>
+        <div class="popup" id="editpopup">
+            <div class="popup__container">
+                <form class="popup__form" name="popupform" id="formEdit">
+                    <button type="button" class="popup__button-close" id="editclose"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
+                    <h3 class="popup__title">Редактировать профиль</h3>
+                    <input name="name" type="text" placeholder="Имя" class="popup__input" id="nameInput" value="Жак-Ив Кусто">
+                    <input name="job" type="text" placeholder="О себе" class="popup__input" id="jobInput" value="Исследователь океана">
+                    <button type="submit" class="popup__button-save">Сохранить</button>
+                </form>
+            </div>
+        </div>
+        <div class="popup" id="addpopup">
+            <div class="popup__container">
+              <form class="popup__form" name="popupform" id="formAdd">
+                    <button type="button" class="popup__button-close" id="addclose"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
+                    <h3 class="popup__title">Новое место</h3>
+                    <input name="mesto" type="text" placeholder="Название" class="popup__input" id="mestoInput" value="">
+                    <input name="link" type="text" placeholder="Ссылка на картинку" class="popup__input" id="linkInput" value="">
+                    <button type="submit" class="popup__button-save">Создать</button>
+                </form>
+            </div>
+        </div>
+        <div class="popup-image" id="imagepopup">
+            <div class="popup-image__container">
+                <div class="popup-image__info">
+                    <img class="popup-image__photo" src="" alt="">
+                    <h3 class="popup-image__title"></h3>
+                    <button type="button" class="popup-image__close"><img class="popup-image__close-photo" src="images/CloseIcon.svg" alt="Закрыть"></button>
+                </div>
+            </div>
+        </div>
     </div> 
 <script src="scripts/index.js"></script>
 </body> 

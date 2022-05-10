@@ -1,6 +1,5 @@
 .popup__container{
     z-index: 2;
-    position: relative;
     max-width: 430px;
     background: rgb(255, 255, 255, 100%);
     border-radius: 10px;

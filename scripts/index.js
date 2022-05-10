@@ -93,6 +93,8 @@ initialCards.forEach(function(item){
 // ОТКРЫТИЕ POPUP ДЛЯ ДОБАВЛЕНИЯ КАРТОЧЕК
 function openAddPopup(){
     addPopup.classList.add('popup_opened');
+    mestoInput.value =''
+    linkInput.value =''
 }
 
 // ЗАКРЫТИЕ POPUP ДЛЯ ДОБАВЛЕНИЯ КАРТОЧЕК

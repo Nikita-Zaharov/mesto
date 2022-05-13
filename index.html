@@ -40,10 +40,10 @@
                 </div>
             </div>
         </template>
-        <div class="popup" id="editpopup">
+        <div class="popup popup_edit">
             <div class="popup__container">
-                <form class="popup__form" name="popupform" id="formEdit">
-                    <button type="button" class="popup__button-close" id="editclose"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
+                <form class="popup__form" name="popupEditForm" id="formEdit">
+                    <button type="button" class="popup__button-close" id="editClose"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
                     <h3 class="popup__title">Редактировать профиль</h3>
                     <input name="name" type="text" placeholder="Имя" class="popup__input" id="nameInput" value="Жак-Ив Кусто">
                     <input name="job" type="text" placeholder="О себе" class="popup__input" id="jobInput" value="Исследователь океана">
@@ -51,27 +51,28 @@
                 </form>
             </div>
         </div>
-        <div class="popup" id="addpopup">
+        <div class="popup popup_add">
             <div class="popup__container">
-              <form class="popup__form" name="popupform" id="formAdd">
-                    <button type="button" class="popup__button-close" id="addclose"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
+              <form class="popup__form" name="popupAddForm" id="formAdd">
+                    <button type="button" class="popup__button-close" id="addClose"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
                     <h3 class="popup__title">Новое место</h3>
-                    <input name="mesto" type="text" placeholder="Название" class="popup__input" id="mestoInput" value="">
-                    <input name="link" type="text" placeholder="Ссылка на картинку" class="popup__input" id="linkInput" value="">
+                    <input name="mesto" type="text" placeholder="Название" class="popup__input" id="placeInput" value="">
+                    <input name="link" type="url" placeholder="Ссылка на картинку" class="popup__input" id="linkInput" value="">
                     <button type="submit" class="popup__button-save">Создать</button>
                 </form>
             </div>
         </div>
-        <div class="popup-image" id="imagepopup">
-            <div class="popup-image__container">
-                <div class="popup-image__info">
-                    <img class="popup-image__photo">
-                    <h3 class="popup-image__title"></h3>
-                    <button type="button" class="popup-image__close"><img class="popup-image__close-photo" src="images/CloseIcon.svg" alt="Закрыть"></button>
+        <div class="popup popup_image">
+            <div class="popup__container-image">
+                <div class="popup__image-info">
+                    <img class="popup__photo">
+                    <h3 class="popup__title-photo"></h3>
+                    <button type="button" class="popup__button-close popup__button-close_image"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
                 </div>
             </div>
         </div>
     </div> 
+<script src="scripts/cards.js"></script>
 <script src="scripts/index.js"></script>
 </body> 
 </html>

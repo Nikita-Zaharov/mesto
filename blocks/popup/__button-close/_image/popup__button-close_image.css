@@ -1,21 +1,14 @@
-.popup-image__close{
+.popup__button-close_image{
     position: absolute;
     top: -40px;
     right: -40px;
-    width: 32px;
-    height: 32px;
     padding: 0;
     background: transparent;
     border: none;
     cursor: pointer;
 }
-.popup-image__close:hover{
-    opacity: 0.6;
-}
 @media all and (max-width:560px){
-    .popup-image__close{
-        width: 20px;
-        height: 20px;
+    .popup__button-close_image{
         top: -32px;
         right: 0;
     }

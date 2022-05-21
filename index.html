@@ -42,37 +42,42 @@
         </template>
         <div class="popup popup_edit">
             <div class="popup__container">
-                <form class="popup__form" name="popupEditForm" id="formEdit">
+                <form class="popup__form" name="popupEditForm" id="formEdit" novalidate>
                     <button type="button" class="popup__button-close" id="editClose"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
                     <h3 class="popup__title">Редактировать профиль</h3>
-                    <input name="name" type="text" placeholder="Имя" class="popup__input" id="nameInput" value="Жак-Ив Кусто">
-                    <input name="job" type="text" placeholder="О себе" class="popup__input" id="jobInput" value="Исследователь океана">
+                    <input name="name" type="text" placeholder="Имя" class="popup__input" id="nameInput" minlength="2" maxlength="40" required value="Жак-Ив Кусто">
+                    <span class="popup__input-error popup__input-error-nameInput"></span>
+                    <input name="job" type="text" placeholder="О себе" class="popup__input" id="jobInput" minlength="2" maxlength="200" required value="Исследователь океана">
+                    <span class="popup__input-error popup__input-error-jobInput"></span>
                     <button type="submit" class="popup__button-save">Сохранить</button>
                 </form>
             </div>
         </div>
         <div class="popup popup_add">
             <div class="popup__container">
-              <form class="popup__form" name="popupAddForm" id="formAdd">
+              <form class="popup__form" name="popupAddForm" id="formAdd" novalidate>
                     <button type="button" class="popup__button-close" id="addClose"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
                     <h3 class="popup__title">Новое место</h3>
-                    <input name="mesto" type="text" placeholder="Название" class="popup__input" id="placeInput" value="">
-                    <input name="link" type="url" placeholder="Ссылка на картинку" class="popup__input" id="linkInput" value="">
+                    <input name="mesto" type="text" placeholder="Название" class="popup__input" id="placeInput" minlength="2" maxlength="30" required value="">
+                    <span class="popup__input-error popup__input-error-placeInput"></span>
+                    <input name="link" type="url" placeholder="Ссылка на картинку" class="popup__input" id="linkInput" required value="">
+                    <span class="popup__input-error popup__input-error-linkInput"></span>
                     <button type="submit" class="popup__button-save">Создать</button>
                 </form>
             </div>
         </div>
         <div class="popup popup_image">
-            <div class="popup__container-image">
-                <div class="popup__image-info">
-                    <img class="popup__photo">
-                    <h3 class="popup__title-photo"></h3>
-                    <button type="button" class="popup__button-close popup__button-close_image"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
-                </div>
+          <div class="popup__container-image">
+            <div class="popup__image-info">
+                <img class="popup__photo">
+                <h3 class="popup__title-photo"></h3>
+                <button type="button" class="popup__button-close popup__button-close_image"><img class="popup__photo-close" src="images/CloseIcon.svg" alt="Закрыть"></button>
             </div>
+          </div>
         </div>
     </div> 
 <script src="scripts/cards.js"></script>
 <script src="scripts/index.js"></script>
+<script src="scripts/validate.js"></script>
 </body> 
 </html>

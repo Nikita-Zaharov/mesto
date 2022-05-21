@@ -26,9 +26,19 @@ const cardNameInput = document.querySelector('#placeInput');
 const cardLinkInput = document.querySelector('#linkInput');
 const formAdd = document.querySelector('#formAdd');
 
+// ФУНКЦИЯ ЗАКРЫТИЯ ПОПАПА НА КНОПКУ ESC
+const closePopupEsc = (evt)=>{
+  if(evt.key ==='Escape'){
+    const popupOpened= document.querySelector('.popup_opened')
+    closePopup(popupOpened)
+    document.removeEventListener('keydown',closePopupEsc)
+  }
+}
+
 // ФУНКЦИЯ ОТКРЫТИЯ POPUP
 function openPopup(anyPopup){
   anyPopup.classList.add('popup_opened');
+  document.addEventListener('keydown',closePopupEsc)
 }
 
 // ФУНКЦИЯ ЗАКРЫТИЯ POPUP
@@ -128,8 +138,16 @@ imageCloseBtn.addEventListener('click',function(){
   closePopup(imagePopup)
 })
 
-
-
+// ФУНКЦИЯ ЗАКРЫТИЯ ПОПАПА НАЖАТИЕМ НА ОВЕРЛЕЙ
+const closePopupOverlay=(evt)=>{
+  if (evt.target.classList.contains('popup_opened')){
+    console.log(evt)
+    closePopup(evt.target)
+  }
+}
+imagePopup.addEventListener('mousedown', closePopupOverlay);
+editPopup.addEventListener('mousedown', closePopupOverlay);
+addPopup.addEventListener('mousedown', closePopupOverlay);
 
 
 

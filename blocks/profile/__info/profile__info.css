@@ -5,8 +5,9 @@
     flex-wrap: wrap;
     width: 336px;
 }
-@media all and (max-width: 320px){
+@media all and (max-width: 560px){
     .profile__info{
         margin: 0;
+        width: 282px;
     }
 }

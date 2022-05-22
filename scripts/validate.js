@@ -12,7 +12,6 @@ const hideInputError = (formElement, inputElement, object) => {
     inputElement.classList.remove(object.inputErrorClass);
     errorElement.classList.remove(object.errorClass);
     errorElement.textContent = '';
-    
 }
 
 // ФУНКЦИЯ ПРОВЕРКИ ИНПАТА НА ВИЛОДНОСТЬ
@@ -44,6 +43,7 @@ const hasInvalidInput= (inputList) => {
     })
 }
 
+
 // ФУНКЦИЯ ИЗМЕНЕНИЯ ПОВЕДЕНИЯ КНОПКИ
 const toggleButtonState = (inputList, buttonElement, object) => {
     if(hasInvalidInput(inputList)){
@@ -60,7 +60,7 @@ const enableValidation = (object) =>{
   const formList = Array.from(document.querySelectorAll(object.formSelector))  
   formList.forEach((formElement) => {
       formElement.addEventListener('submit', function (evt){
-          evt.preventDefaul();
+          evt.preventDefault();
       })
       setEventListeners(formElement, object)
   })

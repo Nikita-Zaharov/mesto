@@ -10,11 +10,8 @@
     width: 358px;
     padding-bottom: 13px;
 }
-
 .popup__input:focus{
     outline: none;
-    border: 2px solid #4dbbfd;
-    border-radius: 5px;
 }
 @media all and (max-width: 560px){
     .popup__input{

@@ -22,6 +22,7 @@ const templateCell = document.querySelector('#cell');
 const cardPopup = document.querySelector('.popup_add');
 const popupAddOpenBtn = document.querySelector('.profile__button-add');
 const popupAddCloseBtn = cardPopup.querySelector('.popup__button-close');
+const buttonSaveCard = cardPopup.querySelector('.popup__button-save');
 const cardNameInput = document.querySelector('#placeInput');
 const cardLinkInput = document.querySelector('#linkInput');
 const formAdd = document.querySelector('#formAdd');
@@ -126,7 +127,6 @@ function handleFormSubmitAdd (evt){
       alt: cardNameInput.value
     }))
   closePopup(cardPopup);  
-  const buttonSaveCard = cardPopup.querySelector('.popup__button-save');
   buttonSaveCard.classList.add('popup__button-save_disabled');
   formAdd.reset();
 } 

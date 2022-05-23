@@ -43,15 +43,24 @@ const hasInvalidInput= (inputList) => {
     })
 }
 
+// ФУНКЦИЯ НЕАКТИВНОЙ КНОПКИ
+const disableButtonSave = (buttonElement, inactiveButtonClass) => {
+    buttonElement.classList.add(inactiveButtonClass)
+    buttonElement.disabled = true
+}
+
+// ФУНКЦИЯ АКТИВНОЙ КНОПКИ
+const enableButtonSave = (buttonElement, inactiveButtonClass) => {
+    buttonElement.classList.remove(inactiveButtonClass)
+    buttonElement.disabled = false
+}
 
 // ФУНКЦИЯ ИЗМЕНЕНИЯ ПОВЕДЕНИЯ КНОПКИ
 const toggleButtonState = (inputList, buttonElement, object) => {
     if(hasInvalidInput(inputList)){
-        buttonElement.classList.add(object.inactiveButtonClass)
-        buttonElement.disabled = true
+        disableButtonSave(buttonElement, object.inactiveButtonClass)
     } else {
-        buttonElement.classList.remove(object.inactiveButtonClass)
-        buttonElement.disabled = false
+        enableButtonSave(buttonElement, object.inactiveButtonClass)
     }
 }
 

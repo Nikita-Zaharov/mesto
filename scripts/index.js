@@ -127,7 +127,7 @@ function handleFormSubmitAdd (evt){
       alt: cardNameInput.value
     }))
   closePopup(cardPopup);  
-  buttonSaveCard.classList.add('popup__button-save_disabled');
+  disableButtonSave(buttonSaveCard, 'popup__button-save_disabled');
   formAdd.reset();
 } 
 

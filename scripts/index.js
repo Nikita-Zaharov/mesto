@@ -1,3 +1,41 @@
+import { FormValidator } from './FormValidator.js'
+import {Card} from './Card.js'
+
+const validatorElements = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_disabled',
+  inputErrorClass: 'popup__input_error',
+  errorClass: 'popup__input-error_visible'
+}; 
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+]; 
+
 // КОНСТАНТЫ ИЗМЕНЕНИЯ ПРОФИЛЯ
 const popupEditOpenBtn = document.querySelector('.profile__button-edit');
 const profilePopup = document.querySelector('.popup_edit');
@@ -16,22 +54,42 @@ const popupPhotoLink  = document.querySelector('.popup__photo');
 
 // TEMPLATE 
 const photoGrid = document.querySelector('.photo-grid');
-const templateCell = document.querySelector('#cell');
 
 //КОНСТАНТЫ  ПОПАПА ДОБАВЛЕНИЯ
 const cardPopup = document.querySelector('.popup_add');
 const popupAddOpenBtn = document.querySelector('.profile__button-add');
 const popupAddCloseBtn = cardPopup.querySelector('.popup__button-close');
-const buttonSaveCard = cardPopup.querySelector('.popup__button-save');
 const cardNameInput = document.querySelector('#placeInput');
 const cardLinkInput = document.querySelector('#linkInput');
 const formAdd = document.querySelector('#formAdd');
 
+
+
+// ФУНКЦИЯ ВСТАВКИ ЯЧЕЙКИ
+ const renderCards=(cell)=>{
+  photoGrid.prepend(cell)
+}
+
+//ФУНКЦИЯ  СОЗДАНИЯ И ВСТАВКИ ЯЧЕЕК С КАРТИНКАМИ НА СТРАНИЦУ
+initialCards.reverse().forEach((element)=>{
+  const cell = new Card(element.name, element.link, '#cell',
+  {popupPhotoLink, openPopup, imagePopup, popupPhotoTitle})
+  const cellEl = cell.createCell();
+  renderCards(cellEl);
+})
+
+// фУНКЦИЯ ВКЛЮЧЕНИЯ ВАЛИДАЦИИ ДЛЯ ВСЕХ ФОРМ
+const validators = {}
+Array.from(document.forms).forEach((formElement)=>{
+  validators[formElement.name] = new FormValidator(validatorElements, formElement);
+  validators[formElement.name].enableValidation();
+})
+
 // ФУНКЦИЯ ЗАКРЫТИЯ ПОПАПА НА КНОПКУ ESC
 const closePopupEsc = (evt)=>{
   if(evt.key ==='Escape'){
-    const popupOpened= document.querySelector('.popup_opened')
-    closePopup(popupOpened)
+    const popupOpened= document.querySelector('.popup_opened');
+    closePopup(popupOpened);
   }
 }
 
@@ -51,6 +109,7 @@ function closePopup(anyPopup){
 function openPropfilePopup(){
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+  validators[formEditElement.name].resetErrors()
   openPopup(profilePopup);
 }
 
@@ -69,73 +128,32 @@ popupEditCloseBtn.addEventListener('click', function(){
 })
 formEditElement.addEventListener('submit', handleFormSubmitEdit);
 
-// ФУНКЦИЯ УДАЛЕНИЯ КАРТОЧКИ
-function handleDeleteCell (evt){
-  evt.target.closest('.cell').remove()
-}
-
-// ФУНКЦИЯ ПРОСТАВЛЕНИЯ ЛАЙКА
-function handleLikeCell (evt) {
-  evt.target.classList.toggle('cell__button-like_active')
-}
-
-// ФУНКЦИЯ ДЛЯ ОТКРЫТЯ ПОПАПА С КАРТИНКОЙ
-function openImagePopup(evt) {
-  const linkImagePopup = evt.target.getAttribute('src');
-  const titleImagePopup = evt.target.getAttribute('alt');
-  popupPhotoLink.src = linkImagePopup;
-  popupPhotoTitle.textContent = titleImagePopup;
-  openPopup(imagePopup);
-}
-
-// ФУНКЦИЯ СОЗДАНИЯ КАРТОЧКИ
-function createCard ({name, link, alt}) {
-  const cellGrid = templateCell.content.cloneNode(true) ;
-  const cellPhoto = cellGrid.querySelector('.cell__photo');  
-  const cellName = cellGrid.querySelector('.cell__info-title');
-  cellName.textContent = name;
-  cellPhoto.src = link;
-  cellPhoto.alt = alt;
-
-  const deleteButton = cellGrid.querySelector('.cell__button-delete');
-  deleteButton.addEventListener('click', handleDeleteCell);
-
-  const likeButton = cellGrid.querySelector('.cell__button-like');
-  likeButton.addEventListener('click', handleLikeCell);
-
-  cellPhoto.addEventListener('click',openImagePopup);
-
-  return cellGrid
-}
-
-// ФУНКИЯ ДОБАВЛЕНИЯ 6 КАРТОЧЕК ИЗ МАССИВА
-initialCards.forEach(({name, link, alt}) => {
-  photoGrid.append(createCard({name, link, alt}))
-})
-
 //ФУНКЦИЯ ОТКРЫТИЯ POPUP ДЛЯ ДОБАВЛЕНИЯ КАРТОЧЕК
 function openAddPopup(){
   openPopup(cardPopup)
+  validators[formAdd.name].resetErrors()
 }
 
 // ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ
 function handleFormSubmitAdd (evt){
   evt.preventDefault();
-  photoGrid.prepend(createCard({
-      name: cardNameInput.value,
-      link: cardLinkInput.value,
-      alt: cardNameInput.value
-    }))
-  closePopup(cardPopup);  
-  disableButtonSave(buttonSaveCard, 'popup__button-save_disabled');
+  const cell = new Card(cardNameInput.value, cardLinkInput.value, '#cell',
+  {popupPhotoLink, openPopup, imagePopup, popupPhotoTitle})
+  const cellEl = cell.createCell()
+  renderCards(cellEl)
+  closePopup(cardPopup); 
   formAdd.reset();
 } 
 
+// ОБРАБОТЧИКИ ДЛЯ ПОПАПА ДОБАВЛЕНИЯ
 popupAddOpenBtn.addEventListener('click', openAddPopup);
 popupAddCloseBtn.addEventListener('click',function(){
+  formAdd.reset()
   closePopup(cardPopup)
 })
 formAdd.addEventListener('submit',handleFormSubmitAdd);
+
+// ОБРАБОТЧИК ДЛЯ ЗАКРЫТИЯ ПОПАПА С КАРТИНКОЙ
 imageCloseBtn.addEventListener('click',function(){
   closePopup(imagePopup)
 })
@@ -147,9 +165,14 @@ const closePopupOverlay=(evt)=>{
     closePopup(evt.target)
   }
 }
+// ОБРАБОТЧИКИ ДЛЯ ЗАКРЫТИЯ ПОПАПОВ ЧЕРЕЗ ОВЕРЛЕЙ
 imagePopup.addEventListener('mousedown', closePopupOverlay);
 profilePopup.addEventListener('mousedown', closePopupOverlay);
 cardPopup.addEventListener('mousedown', closePopupOverlay);
+
+
+
+
 
 
 

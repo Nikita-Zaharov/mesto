@@ -1,40 +1,7 @@
-import { FormValidator } from './FormValidator.js'
-import {Card} from './Card.js'
+import { FormValidator } from './FormValidator.js';
+import {Card} from './Card.js';
+import {validatorElements, initialCards} from './constants.js';
 
-const validatorElements = {
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-save',
-  inactiveButtonClass: 'popup__button-save_disabled',
-  inputErrorClass: 'popup__input_error',
-  errorClass: 'popup__input-error_visible'
-}; 
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]; 
 
 // КОНСТАНТЫ ИЗМЕНЕНИЯ ПРОФИЛЯ
 const popupEditOpenBtn = document.querySelector('.profile__button-edit');
@@ -65,18 +32,23 @@ const formAdd = document.querySelector('#formAdd');
 
 
 
-// ФУНКЦИЯ ВСТАВКИ ЯЧЕЙКИ
- const renderCards=(cell)=>{
-  photoGrid.prepend(cell)
-}
 
-//ФУНКЦИЯ  СОЗДАНИЯ И ВСТАВКИ ЯЧЕЕК С КАРТИНКАМИ НА СТРАНИЦУ
-initialCards.reverse().forEach((element)=>{
-  const cell = new Card(element.name, element.link, '#cell',
+// ФУНКЦИЯ СОЗДАНИЯ КАРТОЧКИ
+const createCard = (name, link , cellSelector,
+  {popupPhotoLink, openPopup, imagePopup, popupPhotoTitle})=>{
+  const cell = new Card(name, link , cellSelector,
   {popupPhotoLink, openPopup, imagePopup, popupPhotoTitle})
   const cellEl = cell.createCell();
-  renderCards(cellEl);
+  photoGrid.prepend(cellEl)
+
+}
+
+//ФУНКЦИЯ  ВСТАВКИ ЯЧЕЕК С КАРТИНКАМИ ИЗ МАССИВА НА СТРАНИЦУ
+initialCards.reverse().forEach((element)=>{
+  createCard(element.name, element.link, '#cell',
+  {popupPhotoLink, openPopup, imagePopup, popupPhotoTitle})
 })
+
 
 // фУНКЦИЯ ВКЛЮЧЕНИЯ ВАЛИДАЦИИ ДЛЯ ВСЕХ ФОРМ
 const validators = {}
@@ -137,10 +109,8 @@ function openAddPopup(){
 // ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ
 function handleFormSubmitAdd (evt){
   evt.preventDefault();
-  const cell = new Card(cardNameInput.value, cardLinkInput.value, '#cell',
-  {popupPhotoLink, openPopup, imagePopup, popupPhotoTitle})
-  const cellEl = cell.createCell()
-  renderCards(cellEl)
+  createCard(cardNameInput.value, cardLinkInput.value, '#cell',
+  {popupPhotoLink, openPopup, imagePopup, popupPhotoTitle});
   closePopup(cardPopup); 
   formAdd.reset();
 } 

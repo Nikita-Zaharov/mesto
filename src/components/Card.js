@@ -1,13 +1,9 @@
-export class Card {
-    constructor(name, link , cellSelector,
-        {popupPhotoLink, openPopup, imagePopup, popupPhotoTitle}){
+export default class Card {
+    constructor(name, link , cellSelector, {clickPhoto}){
         this._name = name;
         this._link = link;
         this._cellSelector = cellSelector;
-        this._openPopup = openPopup;
-        this._popupPhotoLink = popupPhotoLink;
-        this._imagePopup = imagePopup;
-        this._popupPhotoTitle = popupPhotoTitle;
+        this._clickPhoto = clickPhoto
     }
     
     _getTemplate(){
@@ -26,13 +22,6 @@ export class Card {
     _handleLikeCell (evt) {
         evt.target.classList.toggle('cell__button-like_active');
       }
-    
-    _clickPhoto(){
-        this._popupPhotoLink.src=this._link;
-        this._popupPhotoLink.alt= this._name;
-        this._popupPhotoTitle.textContent= this._name;
-        this._openPopup(this._imagePopup);
-    }
 
     _setEventListeners(){
         this._cellImage = this._cell.querySelector('.cell__photo');
@@ -40,7 +29,7 @@ export class Card {
         this._cellDeleteBtn = this._cell.querySelector('.cell__button-delete');
 
         this._cellImage.addEventListener('click',()=>{
-            this._clickPhoto();
+            this._clickPhoto(this._name,this._link);
         })
 
         this._cellLikeBtn.addEventListener('click',(evt)=>{
@@ -61,7 +50,4 @@ export class Card {
         this._cellImage.alt = this._name;
         return this._cell;
     }
-
-
-    
 }

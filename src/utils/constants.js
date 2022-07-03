@@ -6,8 +6,6 @@ const jobInput = document.querySelector('#jobInput');
 const imagePopup = '.popup_image';
 const cardPopup = '.popup_add';
 const popupAddOpenBtn = document.querySelector('.profile__button-add');
-const cardNameInput = document.querySelector('#placeInput');
-const cardLinkInput = document.querySelector('#linkInput');
 const profileName = ".profile__title"
 const profileJob = ".profile__subtitle"
 const templateCell = '#cell'
@@ -58,9 +56,7 @@ const initialCards = [
     templateCell,
     cardPopup,
     popupAddOpenBtn,
-    cardNameInput,
     photoGrid,
-    cardLinkInput,
     profileName,
     profileJob,
     validatorElements,

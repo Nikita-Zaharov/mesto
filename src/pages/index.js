@@ -14,8 +14,6 @@ import {
     imagePopup,
     cardPopup,
     popupAddOpenBtn,
-    cardNameInput,
-    cardLinkInput,
     profileName,
     profileJob,
     validatorElements,
@@ -27,7 +25,7 @@ import {
 
 // ФУНКЦИЯ СОЗДАНИЯ ЭКЗЕМПЛЯРА КАРТОЧКИ
 const createCard = (name, link , cellSelector, {clickPhoto})=>{
-  return new Card(name, link , cellSelector, {clickPhoto})
+  return new Card(name, link , cellSelector, {clickPhoto}).createCell()
 }
 
 //ФУНКЦИЯ  ВСТАВКИ ЯЧЕЕК С КАРТИНКАМИ ИЗ МАССИВА НА СТРАНИЦУ
@@ -37,8 +35,7 @@ const cellList = new Section({
     const cell = createCard(item.name, item.link, templateCell, {clickPhoto: ()=>{
       newImagePopup.open(item.name, item.link)
     }})
-    const cellEl = cell.createCell()
-    cellList.addItem(cellEl)
+    cellList.addItem(cell)
   }
 },photoGrid
 )
@@ -59,25 +56,24 @@ newImagePopup.setEventListeners()
 const userInformation =  new UserInfo({name:profileName,job:profileJob})
 
 // СОЗДАНИЕ ЭКЗЕМПЛЯРА  ПОПАПА С РЕДАКТИРОВАНИЕ 
-const popupEdit  = new PopupWithForm(profilePopup, ()=>{
-  userInformation.setUserInfo(nameInput,jobInput)
+const popupEdit  = new PopupWithForm(profilePopup, (item)=>{
+  userInformation.setUserInfo(item.name, item.job)
 })
 popupEdit.setEventListeners()
 
 // СОЗДАНИЕ ЭКЗЕМПЛЯРА ПОПАПА С ДОБАВЛЕНИЕ КАРТИНКИ 
-const popupAdd = new PopupWithForm(cardPopup,()=>{
-  const newCell = createCard(cardNameInput.value, cardLinkInput.value , '#cell', {clickPhoto:()=>{
-    newImagePopup.open(cardNameInput.value, cardLinkInput.value)
+const popupAdd = new PopupWithForm(cardPopup,(item)=>{
+  const newCell = createCard(item.mesto, item.link , '#cell', {clickPhoto:()=>{
+    newImagePopup.open(item.mesto, item.link)
   }});
-  const cellA  = newCell.createCell()
-  cellList.addItem(cellA)
+  cellList.addItem(newCell)
 })
 popupAdd.setEventListeners()
 
 popupEditOpenBtn.addEventListener('click', ()=>{
-  const UserArray = userInformation.getUserInfo()
-  nameInput.value = UserArray.name
-  jobInput.value = UserArray.job
+  const userArray = userInformation.getUserInfo()
+  nameInput.value = userArray.name
+  jobInput.value = userArray.job
   validators[formEditElement.name].resetErrors()
   popupEdit.open()
 });

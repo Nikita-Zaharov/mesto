@@ -15,8 +15,8 @@ export default class Card {
         return cellElement
     }
 
-    _handleDeleteCell(evt){
-        evt.target.closest('.cell').remove();
+    _handleDeleteCell(){
+        this._cell.remove();
     }
 
     _handleLikeCell (evt) {

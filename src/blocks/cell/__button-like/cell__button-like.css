@@ -5,8 +5,6 @@
     box-sizing: border-box;
     width: 22px;
     height: 19px;
-    padding: 0;
-    margin: 30px 20px 30px 0;
     cursor: pointer;
 }
 .cell__button-like:hover{

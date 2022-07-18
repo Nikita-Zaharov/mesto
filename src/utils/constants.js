@@ -6,11 +6,16 @@ const jobInput = document.querySelector('#jobInput');
 const imagePopup = '.popup_image';
 const cardPopup = '.popup_add';
 const popupAddOpenBtn = document.querySelector('.profile__button-add');
-const profileName = ".profile__title"
-const profileJob = ".profile__subtitle"
+const profileName = '.profile__title'
+const profileJob = '.profile__subtitle'
 const templateCell = '#cell'
 const photoGrid = '.photo-grid'
 const formAdd = document.querySelector('#formAdd')
+const avatar = '.profile__avatar-photo'
+const popupConfirmSelector = '.popup_confirm'
+const popupAvatarSelector = '.popup_avatar'
+const avatarBtn =  document.querySelector('.profile__button-avatar')
+const formAvatar = document.querySelector('#formAvatar')
 
 const validatorElements = {
     inputSelector: '.popup__input',
@@ -61,5 +66,10 @@ const initialCards = [
     profileJob,
     validatorElements,
     initialCards,
-    formAdd
+    formAdd,
+    avatar,
+    popupConfirmSelector,
+    popupAvatarSelector,
+    avatarBtn,
+    formAvatar
  }

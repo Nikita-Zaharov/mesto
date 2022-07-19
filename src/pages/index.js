@@ -101,6 +101,9 @@ const createCard = (data)=>{
           .catch((err)=>{
             console.log(err);
           })
+          .finally(()=>{
+            popupConfirm.load(false)
+          })
       })
     }
   });
@@ -134,6 +137,9 @@ const popupAvatar = new PopupWithForm(popupAvatarSelector,{
     .catch((err)=>{
       console.log(err);
     })
+    .finally(()=>{
+      popupAvatar.load(false)
+    })
   }
 })
 popupAvatar.setEventListeners()
@@ -147,7 +153,7 @@ avatarBtn.addEventListener('click', ()=>{
 // СОЗДАНИЕ ЭКЗЕМПЛЯРА ПОПАПА С ДОБАВЛЕНИЕ КАРТИНКИ 
 const popupAdd = new PopupWithForm(cardPopup,{
   formSubmit: (data)=>{
-    popupAdd.load(true);
+    popupAdd.load(true)
     api.addCard(data)
     .then((data)=>{
       const cell = createCard(data) 
@@ -156,6 +162,9 @@ const popupAdd = new PopupWithForm(cardPopup,{
     })
     .catch((err)=>{
       console.log(err);
+    })
+    .finally(()=>{
+      popupAdd.load(false)
     })
   }
 }
@@ -174,12 +183,14 @@ const popupEdit  = new PopupWithForm(profilePopup, {
     popupEdit.load(true)
     api.editProfile(data)
     .then((res)=>{
-      console.log(res);
       userInformation.setUserInfo(res)
       popupEdit.close()
     })
     .catch((err)=>{
       console.log(err)
+    })
+    .finally(()=>{
+      popupEdit.load(false)
     })
   }}
 )
